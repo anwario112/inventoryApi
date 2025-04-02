@@ -1,0 +1,136 @@
+[
+  {
+    "ContainingType": "InventoryApi.Controllers.InvoiceController",
+    "Method": "CreateInvoice",
+    "RelativePath": "api/Invoice/InvoiceData",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "invoiceRequest",
+        "Type": "InventoryApi.Models.InvoiceRequest",
+        "IsRequired": true
+      },
+      {
+        "Name": "X-Api-Key",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InventoryApi.Controllers.ItemDetailsController",
+    "Method": "GetPrice",
+    "RelativePath": "api/ItemDetails/ItemDetails",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "itemBarcode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "currencyID",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "X-Api-Key",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "servername",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "databasename",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "username",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Year",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "password",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InventoryApi.Controllers.ItemsController",
+    "Method": "GetItems",
+    "RelativePath": "api/Items/Items",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "X-Api-Key",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "servername",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "databasename",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "username",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Year",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "password",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InventoryApi.Controllers.WeatherForecastController",
+    "Method": "Get",
+    "RelativePath": "WeatherForecast",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[InventoryApi.WeatherForecast, InventoryApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "GetWeatherForecast"
+  }
+]
