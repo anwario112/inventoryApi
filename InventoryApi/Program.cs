@@ -1,3 +1,4 @@
+using System.Reflection.Metadata.Ecma335;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
@@ -7,6 +8,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Logging.ClearProviders();
 builder.Logging.AddConsole();
 builder.Logging.AddDebug();
+
+var logger = NLog.LogManager.GetCurrentClassLogger();
+logger.Info("Application Starting...");
+builder.Services.AddSingleton<NLog.ILogger>((e)=> {return logger;});
 
 
 builder.Services.AddControllers();
@@ -50,6 +55,7 @@ app.Use(async (context, next) =>
     }
     catch (Exception ex)
     {
+        logger.Error(ex, "Unhandled exception");
         Console.WriteLine($"Unhandled Exception: {ex}");
         context.Response.StatusCode = 500;
         await context.Response.WriteAsync("An internal server error occurred. Check logs for details.");

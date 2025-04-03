@@ -14,11 +14,15 @@ namespace InventoryApi.Controllers
         private readonly ILogger<ItemsController> _logger;
         private readonly IConfiguration _configuration;
 
-        public ItemsController(ILogger<ItemsController> logger, IConfiguration configuration)
+        public NLog.ILogger Nlogger { get; }
+
+        public ItemsController(ILogger<ItemsController> logger, IConfiguration configuration,NLog.ILogger nlogger)
         {
             _logger = logger;
             _configuration = configuration;
+            Nlogger = nlogger;
         }
+        
 
         private string FullConnection(string serverName, string databaseName, string username, string password, string year)
         {
@@ -117,6 +121,7 @@ namespace InventoryApi.Controllers
             }
             catch (Exception ex)
             {
+                Nlogger.Error(ex, "Error retrieving items");
                 _logger.LogError(ex, "Error retrieving items");
                 return StatusCode(500, new
                 {

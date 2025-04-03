@@ -13,10 +13,13 @@ namespace InventoryApi.Controllers
         private readonly ILogger<ItemsController> _logger;
         private readonly IConfiguration _configuration;
 
-        public ItemDetailsController(ILogger<ItemsController> logger, IConfiguration configuration)
+        public NLog.ILogger Nlogger { get; }
+
+        public ItemDetailsController(ILogger<ItemsController> logger, IConfiguration configuration,NLog.ILogger nlogger)
         {
             _logger = logger;
             _configuration = configuration;
+            Nlogger = nlogger;
         }
 
         private string FullConnection(string serverName, string databaseName, string username, string password, string year)
@@ -122,6 +125,7 @@ namespace InventoryApi.Controllers
             }
             catch (Exception ex)
             {
+                Nlogger.Error(ex, "Error retrieving item price");
                 _logger.LogError(ex, "Error retrieving item price");
                 return StatusCode(500, new { success = false, message = $"Failed to execute price query: {ex.Message}" });
             }
